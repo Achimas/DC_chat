@@ -2,6 +2,7 @@ import os
 import google.generativeai as genai
 from textblob import TextBlob
 import time
+from dotenv import load_dotenv
 
 class DC_chat ():
 
@@ -36,7 +37,7 @@ def test():
         "It's a beautiful day!"
     ]
 
-    api_key = "AIzaSyCawI5BbNLfJkD9bytR1Md8oniEw0aMj4Q"
+    api_key = api_key = os.getenv("gemini_API")
     generation_config = {
         "temperature": 1,
         "top_p": 0.95,
@@ -66,7 +67,7 @@ def test():
         time.sleep(5)
 
 def main(call):
-    api_key = "AIzaSyCawI5BbNLfJkD9bytR1Md8oniEw0aMj4Q"
+    api_key = os.getenv("gemini_API")
     generation_config = {
         "temperature": 1,
         "top_p": 0.95,
@@ -90,4 +91,5 @@ def main(call):
         yield response.text
 
 if __name__=="__main__":
+    load_dotenv()
     test()
